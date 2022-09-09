@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/htmx.org@1.8.0" integrity="sha384-cZuAZ+ZbwkNRnrKi05G/fjBX+azI9DNOkNYysZ0I/X5ZFgsmMiBXgDZof30F5ofc" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+<div class="flex space-x-2 justify-center"> 
+    
+    <form>
+    <fieldset class="px-10 border">
+        <legend class="bg-blue">Select Users to Remove from Auth</legend>
+        <button
+            hx-post="/user/delete/uuids"
+            class="mb-2 w-full inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-normal uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">
+            Delete Users
+        </button>
+        {% for user in users %}
+        <div class="form-check">
+            <input class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" id="{{ user.uid }}" name="{{user.uid}}" checked>
+            <label class="form-check-label inline-block text-gray-800" for="{{ user.uid }}">
+                {{ user.email }}
+            </label>
+        </div>
+        {% endfor %}
+    </fieldset>
+    </form>
+</div>
+</body>
+
+</html>

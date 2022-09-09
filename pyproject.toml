@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "authclean"
+version = "0.1.0"
+description = ""
+authors = ["Allan Anderson <rubel@goosemoon.org>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Flask = {extras = ["async"], version = "^2.2.2"}
+watchdog = "^2.1.9"
+blinker = "^1.5"
+firebase-admin = "^5.3.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
